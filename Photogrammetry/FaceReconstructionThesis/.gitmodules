@@ -1,0 +1,3 @@
+[submodule "lib/OrbbecSDK"]
+	path = lib/OrbbecSDK
+	url = git@github.com:orbbec/OrbbecSDK.git
