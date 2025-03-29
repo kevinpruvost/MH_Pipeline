@@ -1,0 +1,4 @@
+# ignore GaussianHaircut/ HairStep/ and NextFace/ folders inside the folders at this depth 
+*/GaussianHaircut/
+*/HairStep/
+*/NextFace/
