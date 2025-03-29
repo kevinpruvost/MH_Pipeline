@@ -1,0 +1,46 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.13.0.1dev
+# options: -q -O2 -I/home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders -I/home/blender/git/blender-v360/blender.git/lib/linux_x64/osl/share/OSL/shaders -o /home/blender/git/blender-v360/build_release/intern/cycles/kernel/osl/shaders/node_glossy_bsdf.oso
+shader node_glossy_bsdf
+param	color	Color	0.800000012 0.800000012 0.800000012		%read{4,8} %write{2147483647,-1}
+param	string	distribution	"ggx"		%read{2,7} %write{2147483647,-1}
+param	float	Roughness	0.200000003		%read{1,1} %write{2147483647,-1}
+param	normal	Normal	0 0 0		%read{4,7} %write{0,0} %initexpr
+oparam	closure color	BSDF			%read{2147483647,-1} %write{5,8}
+global	normal	N	%read{0,0} %write{2147483647,-1}
+local	float	roughness	%read{4,7} %write{1,1}
+const	string	$const1	"Multiscatter GGX"		%read{2,2} %write{2147483647,-1}
+temp	int	$tmp1	%read{3,3} %write{2,2}
+temp	closure color	$tmp2	%read{5,5} %write{4,4}
+const	string	$const2	"microfacet_multi_ggx"		%read{4,4} %write{2147483647,-1}
+temp	closure color	$tmp3	%read{8,8} %write{7,7}
+const	float	$const3	0		%read{7,7} %write{2147483647,-1}
+const	int	$const4	0		%read{7,7} %write{2147483647,-1}
+const	string	$const5	"microfacet"		%read{6,7} %write{2147483647,-1}
+const	vector	$const6	0 0 0		%read{7,7} %write{2147483647,-1}
+code Normal
+# /home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders/node_glossy_bsdf.osl:10
+#                         normal Normal = N,
+	assign		Normal N 	%filename{"/home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders/node_glossy_bsdf.osl"} %line{10} %argrw{"wr"}
+code ___main___
+# /home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders/node_glossy_bsdf.osl:13
+#   float roughness = Roughness * Roughness;
+	mul		roughness Roughness Roughness 	%filename{"/home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders/node_glossy_bsdf.osl"} %line{13} %argrw{"wrr"}
+# /home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders/node_glossy_bsdf.osl:15
+#   if (distribution == "Multiscatter GGX")
+	eq		$tmp1 distribution $const1 	%line{15} %argrw{"wrr"}
+	if		$tmp1 6 9 	%argrw{"r"}
+# /home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders/node_glossy_bsdf.osl:16
+#     BSDF = Color * microfacet_multi_ggx(Normal, roughness, Color);
+	closure		$tmp2 $const2 Normal roughness Color 	%line{16} %argrw{"wrrrr"}
+	mul		BSDF $tmp2 Color 	%argrw{"wrr"}
+# /home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders/node_glossy_bsdf.osl:18
+#     BSDF = Color * microfacet(distribution, Normal, roughness, 0.0, 0);
+	functioncall	$const5 8 	%line{18} %argrw{"r"}
+# /home/blender/git/blender-v360/blender.git/lib/linux_x64/osl/share/OSL/shaders/stdosl.h:463
+#     return microfacet(distribution, N, vector(0), alpha, alpha, eta, refr);
+	closure		$tmp3 $const5 distribution Normal $const6 roughness roughness $const3 $const4 	%filename{"/home/blender/git/blender-v360/blender.git/lib/linux_x64/osl/share/OSL/shaders/stdosl.h"} %line{463} %argrw{"wrrrrrrrr"}
+# /home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders/node_glossy_bsdf.osl:18
+#     BSDF = Color * microfacet(distribution, Normal, roughness, 0.0, 0);
+	mul		BSDF $tmp3 Color 	%filename{"/home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders/node_glossy_bsdf.osl"} %line{18} %argrw{"wrr"}
+	end

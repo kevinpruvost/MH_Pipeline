@@ -1,0 +1,11 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.13.0.1dev
+# options: -q -O2 -I/home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders -I/home/blender/git/blender-v360/blender.git/lib/linux_x64/osl/share/OSL/shaders -o /home/blender/git/blender-v360/build_release/intern/cycles/kernel/osl/shaders/node_output_displacement.oso
+displacement node_output_displacement
+param	vector	Displacement	0 0 0		%read{0,0} %write{2147483647,-1}
+global	point	P	%read{0,0} %write{0,0}
+code ___main___
+# /home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders/node_output_displacement.osl:8
+#   P += Displacement;
+	add		P P Displacement 	%filename{"/home/blender/git/blender-v360/blender.git/intern/cycles/kernel/osl/shaders/node_output_displacement.osl"} %line{8} %argrw{"wrr"}
+	end
