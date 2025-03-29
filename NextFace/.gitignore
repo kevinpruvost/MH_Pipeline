@@ -1,0 +1,6 @@
+output*
+test*
+**/*.pickle
+**/*.tar
+**/*.pth
+**/*.h5
