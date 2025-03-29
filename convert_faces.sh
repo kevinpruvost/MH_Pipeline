@@ -1,0 +1,1 @@
+./GaussianHaircut/blender-3.6.13-linux-x64/blender -b -P ./convert_faces.py

@@ -4,3 +4,4 @@ test*
 **/*.tar
 **/*.pth
 **/*.h5
+assets/
