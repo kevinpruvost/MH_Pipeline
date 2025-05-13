@@ -2,7 +2,11 @@
 
 # Find all png files in assets/$1 directories
 # take dir from $1 as it is a file originally
-INPUT_DIR=$(dirname "$1")
+INPUT_DIR="$1"
+# if its a dir, then ok, otherwise take the dir from the file
+if [ -d "$INPUT_DIR" ]; then
+    INPUT_DIR=$(dirname "$INPUT_DIR")
+fi
 echo "Input directory: $INPUT_DIR"
 files=$(find ./$INPUT_DIR -type f -iname "*.png")
 echo "Found files: $files"
@@ -14,7 +18,6 @@ files=$(echo "$files" | grep "front.png")
 CONDA_PATH="/home/pkw/miniconda3"
 
 # Input and output arguments from Makefile
-INPUT_IMAGE="$1"
 OUTPUT_DIR="$2"
 export CUDA_VISIBLE_DEVICES="0"
 

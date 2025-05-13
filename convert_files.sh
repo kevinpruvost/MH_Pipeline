@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Find all JPG and JPEG files in assets/ directories
-files=$(find ./assets -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.JPG" \))
+files=$(find ./assets -type f -maxdepth 2 \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.JPG" \))
 
 for file in $files; do
     if [ -f "$file" ]; then

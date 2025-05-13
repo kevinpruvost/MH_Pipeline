@@ -2,8 +2,12 @@
 
 # Find all mp4 files in assets/$1 directories
 # take dir from $1 as it is a file originally
-INPUT_DIR=$(dirname "$1")
-echo "Input directory: $INPUT_DIR"
+INPUT_DIR="$1"
+# if its a dir, then ok, otherwise take the dir from the file
+if [ -d "$INPUT_DIR" ]; then
+    =$(dirname "$INPUT_DIR")
+fi
+echINPUT_DIRo "Input directory: $INPUT_DIR"
 files=$(find ./$INPUT_DIR -type f -iname "*.mp4")
 echo "Found files: $files"
 
@@ -11,7 +15,6 @@ echo "Found files: $files"
 CONDA_PATH="/home/pkw/miniconda3"
 
 # Input and output arguments from Makefile
-INPUT_IMAGE="$1"
 OUTPUT_DIR="$2"
 #if gpu specified, use it
 if [ -z "$3" ]; then
@@ -35,4 +38,4 @@ done
 source "$CONDA_PATH/etc/profile.d/conda.sh"
 cd GaussianHaircut
 echo
-#bash run.sh "../$OUTPUT_DIR/"
+bash run.sh "../$OUTPUT_DIR/" 0
