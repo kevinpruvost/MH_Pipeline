@@ -4,6 +4,8 @@ Pipeline for creating MetaHumans (hair & face) from images and videos.
 
 ## Overview
 
+![MH_Pipeline GUI Placeholder](image1.png)
+
 MH_Pipeline is a toolset for generating MetaHuman-compatible hair and face assets from images and videos. It integrates specialized components: GaussianHaircut, HairStep, NextFace, and 3DDFA—accessed through a Gradio-based GUI. Results are saved in the `results/` folder, and input assets can be placed in the `assets/` folder or uploaded directly via the GUI.
 
 ## Setup and Installation
@@ -133,14 +135,6 @@ Use the GUI to upload images or videos, or place them in the `assets/` folder.
 **Get Results**
 
 Outputs are saved in the `results/` folder.
-
-## GUI Preview
-
-Below is a placeholder for the GUI interface:
-
-![MH_Pipeline GUI Placeholder](assets/gui_placeholder.png)
-
-*Note*: Replace `assets/gui_placeholder.png` with an actual screenshot of the GUI for a visual reference.
 
 ## Contributing
 
